@@ -9,9 +9,11 @@ public class Goal : MonoBehaviour {
 		switch(playerNumbers){
 		case PlayerNumbers.One: 
 			Debug.Log ("Player two scored!");
+			Messenger.Broadcast("Goal");
 			break;
 		case PlayerNumbers.Two:
 			Debug.Log ("Player One scored!");
+			Messenger.Broadcast("Goal");
 			break;
 		}
 	}
