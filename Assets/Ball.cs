@@ -3,7 +3,14 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 
-	// Use this for initialization
+	void OnEnable() {
+		Messenger.AddListener<PlayerNumbers>("Goal", OnGoal);
+	}
+	
+	void OnDisable(){
+		Messenger.RemoveListener<PlayerNumbers>("Goal", OnGoal);
+	}
+
 	void Start () {
 		float randomAngle = Random.Range (0f, 360f);
 		Vector2 startVelocity = new Vector2();
@@ -13,7 +20,7 @@ public class Ball : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 
 
@@ -36,6 +43,11 @@ public class Ball : MonoBehaviour {
 
 		rigidbody.velocity = newVelocity;
 
+	}
+
+	void OnGoal(PlayerNumbers Player){
+		transform.position = Vector3.zero;
+		Start ();
 	}
 
 }
