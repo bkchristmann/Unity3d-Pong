@@ -45,4 +45,17 @@ public class Paddle : MonoBehaviour {
 	}
 
 
+	void OnCollisionEnter2D(Collision2D collision){
+		if (collision.gameObject.tag == "Ball") {
+			Debug.Log ("Ball Hit");
+			GameObject ball = collision.gameObject;
+			Vector3 ballReflection = ball.transform.position - this.transform.position;
+			ballReflection.Normalize();
+			float speed = ball.GetComponent<Rigidbody2D>().velocity.magnitude;
+			ball.GetComponent<Rigidbody2D>().velocity = (Vector2)ballReflection * speed;
+
+		}
+	}
+
+
 }

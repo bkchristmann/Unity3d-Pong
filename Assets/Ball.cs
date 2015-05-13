@@ -50,4 +50,9 @@ public class Ball : MonoBehaviour {
 		Start ();
 	}
 
+	void OnCollisionExit2D(Collision2D collision){
+		Rigidbody2D rb = GetComponent<Rigidbody2D>();
+		rb.velocity *= 1.05f;
+	}
+
 }
